@@ -1,8 +1,13 @@
-// Deposit Money
-document.getElementById("deposit-btn").addEventListener("click",function(){
+function getInputValue() {
     const depositInput = document.getElementById("deposit-amount");
     const depositInputText = depositInput.value;
     const depositInputAmount = parseFloat(depositInputText);
+    depositInput.value = "";
+    return depositInputAmount;
+}
+// Deposit Money
+document.getElementById("deposit-btn").addEventListener("click",function(){
+    const depositInputAmount = getInputValue()
     // Total Deposit
     const depositTotal = document.getElementById("deposit-total");
     const depositTotalText = depositTotal.innerText;
@@ -16,7 +21,6 @@ document.getElementById("deposit-btn").addEventListener("click",function(){
     const balanceTotalAmount = parseFloat(balanceTotalText);
     const newBalanceAfterDeposit = balanceTotalAmount + depositInputAmount;
     balanceTotal.innerText = newBalanceAfterDeposit;
-    depositInput.value = "";
 })
 // Withdraw Money
 document.getElementById("withdraw-btn").addEventListener("click",function(){
